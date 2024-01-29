@@ -3,10 +3,10 @@ const controller = require("./movies.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 const cors = require("cors");
 
-const corsGet = cors({methods: "GET"});
+const corsGet = cors({ methods: "GET" });
 
 router
-  .route("/movies?is_showing=true")
+  .route("/?is_showing=true")
   .get(cors(), controller.moviesShowing)
   .options(corsGet)
   .all(methodNotAllowed);
