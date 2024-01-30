@@ -9,8 +9,12 @@ function list () {
 function moviesShowing () {
   return knex("movies as m")
     .join("movies_theaters as mt", "m.movie_id" , "mt.movie_id" )
-    .select("m*")
+    .select("m.*")
     .where({ "mt.is_showing": true })
+    .then((arr) => {
+      const uniqueMovies = Array.from(new Set(arr.map(JSON.stringify)), JSON.parse);
+      return uniqueMovies;
+    });
 }
 
 

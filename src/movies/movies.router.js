@@ -6,12 +6,6 @@ const cors = require("cors");
 const corsGet = cors({ methods: "GET" });
 
 router
-  .route("/?is_showing=true")
-  .get(cors(), controller.moviesShowing)
-  .options(corsGet)
-  .all(methodNotAllowed);
-
-router
   .route("/")
   .get(cors(), controller.list)
   .options(corsGet)
